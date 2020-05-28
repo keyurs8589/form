@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, Form} from "react-bootstrap";
+import { Badge, Form } from "react-bootstrap";
 import LabelInput from "./LabelInput";
 import FormButton from "./FormButton";
 
