@@ -3,7 +3,8 @@ import { Badge, Form } from "react-bootstrap";
 import LabelInput from "./LabelInput";
 import FormButton from "./FormButton";
 
-function FormJson({formData, formId}) {
+function FormJson({ formSingleData }) {
+  console.log(formSingleData)
   return (
     <div>
       <h1>
@@ -14,22 +15,22 @@ function FormJson({formData, formId}) {
           <LabelInput
             formLabel="Unique User ID:"
             formMutedText="Unique Identification Number for Each User."
-            val={formData[formId].id}
+            val={formSingleData.length !== 0 && formSingleData[0].id}
           />
           <LabelInput
             formLabel="User ID:"
             formMutedText="User Identification Number."
-            val={formData[formId].userId}
+            val={formSingleData.length !== 0 && formSingleData[0].userId}
           />
           <LabelInput
             formLabel="Title:"
             formMutedText="Given Title from User."
-            val={formData[formId].title}
+            val={formSingleData.length !== 0 && formSingleData[0].title}
           />
           <LabelInput
             formLabel="Body:"
             formMutedText="Description of given title.."
-            val={formData[formId].body}
+            val={formSingleData.length !== 0 && formSingleData[0].body}
           />
         </div>
         <div className="button-flex">

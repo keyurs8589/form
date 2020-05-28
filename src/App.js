@@ -21,10 +21,10 @@ function App() {
       })
       .catch((err) => console.log(err.data));
   }, []);
-  console.log(formData[formId]);
+  console.log(formData.filter(data => data.id === 1));
   return (
     <div className="App form-body">
-      <FormJson formData={formData} formId={formId} />
+      <FormJson formSingleData={formData.filter(data => data.id === 1)} />
       <FormListRow data={""} />
       {formData.map((data) => (
         <FormListRow key={data.id} data={data} />
