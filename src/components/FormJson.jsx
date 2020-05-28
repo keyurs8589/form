@@ -1,7 +1,7 @@
 import React from "react";
-import { Badge, Form, Button } from "react-bootstrap";
-import "../style/form.css";
+import { Badge, Form} from "react-bootstrap";
 import LabelInput from "./LabelInput";
+import FormButton from "./FormButton";
 
 function FormJson() {
   return (
@@ -29,15 +29,9 @@ function FormJson() {
           />
         </div>
         <div className="button-flex">
-          <Button className="mx-5 mb-1 mb-md-0" variant="secondary">
-            Add
-          </Button>
-          <Button className="mx-5 mb-1 mb-md-0" variant="secondary">
-            Update
-          </Button>
-          <Button className="mx-5 mb-1 mb-md-0" variant="secondary">
-            Reset
-          </Button>
+          <FormButton buttonTitle="Insert" />
+          <FormButton buttonTitle="Update" />
+          <FormButton buttonTitle="Reset" />
         </div>
       </Form>
     </div>
