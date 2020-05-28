@@ -7,19 +7,28 @@ import axios from "axios";
 
 function App() {
   const [formData, setFormData] = useState([]);
+  const [formId, setFormId] = useState(0);
+
   useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/posts")
-      .then((res) => setFormData(res.data))
+      .then((res) => {
+        if (res.status === 200) {
+          setFormData(res.data);
+        } else {
+          console.log("Data Fetching Error");
+        }
+      })
       .catch((err) => console.log(err.data));
   }, []);
-  console.log(formData);
+  console.log(formData[formId]);
   return (
     <div className="App form-body">
-      <FormJson />
+      <FormJson formData={formData} formId={formId} />
+      <FormListRow data={""} />
       {formData.map((data) => (
-        <FormListRow key={formData.id} data={data}></FormListRow>
-      ))}      
+        <FormListRow key={data.id} data={data} />
+      ))}
     </div>
   );
 }

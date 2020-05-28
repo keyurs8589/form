@@ -30,6 +30,12 @@
   display: grid;
   grid-template-columns: 8% 8% 25% auto 8%;
 }
+.text-light {
+  font-weight: 100;
+}
+.font-title {
+  font-weight: 500;
+}
 @media only screen and (max-width: 600px) {
   .input-text {
     display: block;
@@ -47,5 +53,8 @@
   .medium-padding {
     padding-top: 0;
     padding-bottom: 0;
+  }
+  .invisible-sm {
+    display: none;
   }
 }
