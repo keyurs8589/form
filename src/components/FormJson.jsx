@@ -4,7 +4,6 @@ import LabelInput from "./LabelInput";
 import FormButton from "./FormButton";
 
 function FormJson({ formSingleData }) {
-  console.log(formSingleData)
   return (
     <div>
       <h1>
@@ -13,24 +12,28 @@ function FormJson({ formSingleData }) {
       <Form className="form-main-inline-grid">
         <div className="form-inline-grid">
           <LabelInput
+            elementId="id"
             formLabel="Unique User ID:"
             formMutedText="Unique Identification Number for Each User."
-            val={formSingleData.length !== 0 && formSingleData[0].id}
+            val={formSingleData.id}
           />
           <LabelInput
+            elementId="userId"
             formLabel="User ID:"
             formMutedText="User Identification Number."
-            val={formSingleData.length !== 0 && formSingleData[0].userId}
+            val={formSingleData.userId}
           />
           <LabelInput
+            elementId="title"
             formLabel="Title:"
             formMutedText="Given Title from User."
-            val={formSingleData.length !== 0 && formSingleData[0].title}
+            val={formSingleData.title}
           />
           <LabelInput
+            elementId="body"
             formLabel="Body:"
             formMutedText="Description of given title.."
-            val={formSingleData.length !== 0 && formSingleData[0].body}
+            val={formSingleData.body}
           />
         </div>
         <div className="button-flex">

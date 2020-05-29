@@ -7,7 +7,16 @@ import axios from "axios";
 
 function App() {
   const [formData, setFormData] = useState([]);
-  const [formId, setFormId] = useState(0);
+  const [formId, setFormId] = useState(1);
+  const deleteData = (deleteId) => {
+    setFormData(formData.filter((data) => data.id !== deleteId));
+    formId === deleteId &&
+      setFormId(
+        parseInt(
+          prompt("Trying to delete display id please enter another ID", 1)
+        )
+      );
+  };
 
   useEffect(() => {
     axios
@@ -15,19 +24,30 @@ function App() {
       .then((res) => {
         if (res.status === 200) {
           setFormData(res.data);
-        } else {
+        } else if (res.status === 400) {
           console.log("Data Fetching Error");
         }
       })
       .catch((err) => console.log(err.data));
   }, []);
-  console.log(formData.filter(data => data.id === 1));
   return (
     <div className="App form-body">
-      <FormJson formSingleData={formData.filter(data => data.id === 1)} />
+      <FormJson
+        formSingleData={
+          formData.length !== 0
+            ? formData.find((data) => data.id === formId)
+            : ""
+        }
+      />
       <FormListRow data={""} />
       {formData.map((data) => (
-        <FormListRow key={data.id} data={data} />
+        <FormListRow
+          key={data.id}
+          data={data}
+          deleteData={() => {
+            deleteData(data.id);
+          }}
+        />
       ))}
     </div>
   );

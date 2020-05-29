@@ -1,52 +1,48 @@
-import React from "react";
-import { ListGroup, ButtonGroup, Button } from "react-bootstrap";
+import React, {useState} from "react";
+import { ListGroup, Button } from "react-bootstrap";
 
-function FormListRow({ data }) {
+function FormListRow({ data, deleteData }) {
+  const [localData, setLocalData] = useState(data);
   return (
     <div>
       <ListGroup horizontal className="list-item">
         <ListGroup.Item
           className={
-            data === ""
+            localData === ""
               ? "px-0 medium-padding invisible-sm font-title"
               : "px-0 medium-padding"
           }
           variant="dark"
         >
-          {data === "" ? "UniqueID" : data.id}
+          {localData === "" ? "UniqueID" : localData.id}
         </ListGroup.Item>
         <ListGroup.Item
           className={
-            data === ""
+            localData === ""
               ? "px-0 medium-padding invisible-sm font-title"
               : "px-0 medium-padding"
           }
           variant="secondary"
         >
-          {data === "" ? "UserID" : data.userId}
+          {localData === "" ? "UserID" : localData.userId}
         </ListGroup.Item>
         <ListGroup.Item
-          className={data === "" ? "px-0 invisible-sm font-title" : "p-0"}
+          className={localData === "" ? "px-0 invisible-sm font-title" : "p-0"}
         >
           {data === "" ? "Title" : data.title}
         </ListGroup.Item>
         <ListGroup.Item
-          className={data === "" ? "px-0 invisible-sm font-title" : "p-0"}
+          className={localData === "" ? "px-0 invisible-sm font-title" : "p-0"}
         >
-          {data === "" ? "Body" : data.body}
+          {localData === "" ? "Body" : localData.body}
         </ListGroup.Item>
         <ListGroup.Item
-          className={data === "" ? "invisible-sm" : "px-0 medium-padding"}
+          className={localData === "" ? "invisible-sm" : "px-0 medium-padding"}
         >
-          {data !== "" && (
-            <ButtonGroup>
-              <Button variant="secondary" size="sm">
-                Edit
-              </Button>
-              <Button variant="secondary" size="sm">
-                Delete
-              </Button>
-            </ButtonGroup>
+          {localData !== "" && (
+            <Button onClick={deleteData} variant="secondary" size="sm">
+              Delete
+            </Button>
           )}
         </ListGroup.Item>
       </ListGroup>
