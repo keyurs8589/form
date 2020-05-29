@@ -1,8 +1,11 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { ListGroup, Button } from "react-bootstrap";
 
 function FormListRow({ data, deleteData }) {
   const [localData, setLocalData] = useState(data);
+  useEffect(() => {
+    setLocalData(data);
+  }, [data]);
   return (
     <div>
       <ListGroup horizontal className="list-item">

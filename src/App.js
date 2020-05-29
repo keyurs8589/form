@@ -13,9 +13,24 @@ function App() {
     formId === deleteId &&
       setFormId(
         parseInt(
-          prompt("Trying to delete display id please enter another ID", 1)
+          prompt(
+            "Trying to delete display form id please enter another ID to display",
+            1
+          )
         )
       );
+  };
+  const displayData = (displayId) => {
+    setFormId(displayId);
+  };
+  const updateData = (editedData, editedId) => {
+    setFormData(
+      formData.map((data) => (data.id === editedId ? editedData : data))
+    );
+  };
+  const insertData = (newData) => {
+    formData.push(newData);
+    formData.sort((a, b) => a - b);
   };
 
   useEffect(() => {
@@ -38,6 +53,10 @@ function App() {
             ? formData.find((data) => data.id === formId)
             : ""
         }
+        displayData={(displayId) => displayData(displayId)}
+        updateData={(editedData) => updateData(editedData, formId)}
+        resetLength={formData.length + 1}
+        insertData={(newData) => insertData(newData)}
       />
       <FormListRow data={""} />
       {formData.map((data) => (
