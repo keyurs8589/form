@@ -29,7 +29,7 @@ function App() {
     );
   };
   const insertData = (newData) => {
-    formData.push(newData);
+    setFormData(formData.concat(newData));
     formData.sort((a, b) => a - b);
   };
 

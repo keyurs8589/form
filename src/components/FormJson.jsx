@@ -41,6 +41,7 @@ function FormJson({
                 onChange={onIdChangeHandler}
                 onBlur={(e) => displayData(parseInt(e.target.value))}
                 value={localData.id}
+                defaultValue="1"
               />
               <Form.Text className="text-muted text-light">
                 Unique Identification Number for Each User.
